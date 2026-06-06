@@ -1,12 +1,6 @@
 # Future-Odyssey-A-Day-in-2050
 # 🚀 Future Odyssey: A Day in 2050
 
-<p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2Nwd3N3cjR4M3J4cGZ6c2x0bGF4M2x3eTV3eTRlY2w1MXN4N3A5eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0HlNaQ6gWfllcjDO/giphy.gif" width="100%">
-</p>
-
-<p align="center">
-
 🌌 Interactive Storytelling • 🤖 Future Technology • 🚀 Cinematic Experience • ✨ Immersive Animations
 
 </p>
