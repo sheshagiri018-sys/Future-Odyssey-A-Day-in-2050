@@ -1,0 +1,402 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   DESIGN SYSTEM — A DAY IN 2050
+   ========================================= */
+
+:root {
+  --void: #000000;
+  --abyss: #03070F;
+  --cosmos: #060D1A;
+  --nebula: #0A1628;
+  --electric: #00B8FF;
+  --electric-dim: rgba(0, 184, 255, 0.15);
+  --plasma: #00FFFF;
+  --aurora: #7B2FFF;
+  --nova: #FF6B2B;
+  --gold: #FFB800;
+  --stellar: #C8E6FF;
+  --danger: #FF3B30;
+  --success: #00FF88;
+  --glow-blue: 0 0 30px rgba(0, 184, 255, 0.5);
+  --glow-purple: 0 0 30px rgba(123, 47, 255, 0.5);
+  --glow-gold: 0 0 30px rgba(255, 184, 0, 0.5);
+  --glow-green: 0 0 30px rgba(0, 255, 136, 0.5);
+  --font-title: 'Bebas Neue', cursive;
+  --font-ui: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Cinzel', serif;
+}
+
+/* =========================================
+   RESET & BASE
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--void);
+  color: var(--stellar);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* =========================================
+   CUSTOM CURSOR
+   ========================================= */
+
+.cursor-outer {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 184, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.15s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-inner {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--electric);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================================
+   CUSTOM SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--abyss);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--electric);
+  border-radius: 2px;
+}
+
+/* =========================================
+   GRAIN OVERLAY
+   ========================================= */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.4;
+}
+
+/* =========================================
+   GLASSMORPHISM
+   ========================================= */
+
+.glass {
+  background: rgba(10, 22, 40, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 184, 255, 0.12);
+  border-radius: 16px;
+}
+
+.glass-bright {
+  background: rgba(0, 184, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 184, 255, 0.2);
+  border-radius: 16px;
+}
+
+/* =========================================
+   GLOW UTILITIES
+   ========================================= */
+
+.glow-blue { text-shadow: 0 0 20px rgba(0, 184, 255, 0.8); }
+.glow-gold { text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+.glow-green { text-shadow: 0 0 20px rgba(0, 255, 136, 0.8); }
+.glow-purple { text-shadow: 0 0 20px rgba(123, 47, 255, 0.8); }
+.glow-red { text-shadow: 0 0 20px rgba(255, 59, 48, 0.8); }
+
+.box-glow-blue { box-shadow: 0 0 40px rgba(0, 184, 255, 0.2), inset 0 0 20px rgba(0, 184, 255, 0.05); }
+.box-glow-gold { box-shadow: 0 0 40px rgba(255, 184, 0, 0.2), inset 0 0 20px rgba(255, 184, 0, 0.05); }
+.box-glow-green { box-shadow: 0 0 40px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.05); }
+
+/* =========================================
+   SECTION SHARED STYLES
+   ========================================= */
+
+.section-base {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.chapter-number {
+  font-family: var(--font-bebas);
+  font-size: clamp(5rem, 15vw, 14rem);
+  line-height: 0.85;
+  opacity: 0.04;
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.1em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--stellar) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =========================================
+   ANIMATED GRID LINES
+   ========================================= */
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 184, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 184, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* =========================================
+   DATA LINE ANIMATIONS
+   ========================================= */
+
+@keyframes dataLine {
+  0% { width: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+}
+
+@keyframes dnaRotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes buildingGrow {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to { transform: scaleY(1); transform-origin: bottom; }
+}
+
+@keyframes trailFade {
+  0% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(0); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.02); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+.font-bebas { font-family: var(--font-title); }
+.font-syne { font-family: var(--font-ui); }
+.font-mono { font-family: var(--font-mono); }
+.font-cinzel { font-family: var(--font-display); }
+
+.text-electric { color: var(--electric); }
+.text-plasma { color: var(--plasma); }
+.text-aurora { color: var(--aurora); }
+.text-nova { color: var(--nova); }
+.text-gold { color: var(--gold); }
+.text-stellar { color: var(--stellar); }
+
+.bg-electric { background-color: var(--electric); }
+.bg-abyss { background-color: var(--abyss); }
+.bg-cosmos { background-color: var(--cosmos); }
+.bg-nebula { background-color: var(--nebula); }
+
+.border-electric { border-color: rgba(0, 184, 255, 0.3); }
+.border-gold { border-color: rgba(255, 184, 0, 0.3); }
+.border-green { border-color: rgba(0, 255, 136, 0.3); }
+
+/* =========================================
+   HERO SPECIFIC
+   ========================================= */
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   SCANLINE EFFECT
+   ========================================= */
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================================
+   HOLOGRAPHIC EFFECT
+   ========================================= */
+
+.holo {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 184, 255, 0.1) 0%,
+    rgba(123, 47, 255, 0.1) 50%,
+    rgba(0, 255, 255, 0.1) 100%
+  );
+  border: 1px solid rgba(0, 184, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.holo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 184, 255, 0.08),
+    transparent
+  );
+  animation: holoShimmer 4s ease-in-out infinite;
+}
+
+@keyframes holoShimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* =========================================
+   CLIP PATH SHAPES
+   ========================================= */
+
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-angled {
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  
+  body::after {
+    opacity: 0.2;
+  }
+}
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+  background: rgba(0, 184, 255, 0.3);
+  color: white;
+}
