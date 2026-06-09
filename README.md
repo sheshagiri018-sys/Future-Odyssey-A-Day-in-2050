@@ -1,4 +1,4 @@
-# Future Odyssey — A Day in 2050📈
+# Future Odyssey — A Day in 2050
 
 > *"The future is not a destination. It is a responsibility."*
 
