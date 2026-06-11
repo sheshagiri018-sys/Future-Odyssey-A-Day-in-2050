@@ -37,7 +37,7 @@ const colonies = [
     population: '640',
     status: 'Initial Phase',
     founded: '2048',
-    desc: 'Humanity's farthest permanent outpost. Studying Titan's methane lakes offers clues about pre-biotic chemistry and planetary formation.',
+    desc: "Humanity's farthest permanent outpost. Studying Titan's methane lakes offers clues about pre-biotic chemistry and planetary formation.",
     color: '#FFB800',
     distance: '1.2B km',
   },
