@@ -29,7 +29,7 @@ A world-class cinematic scroll-driven storytelling experience — built to Awwwa
 
 ---
 
-## ✦ Features
+## ✦ Features!
 
 - 🌌 **Three.js Galaxy** — 12,000 spiral particles with GSAP cinematic intro
 - 🔭 **3D Space Scene** — Mars, orbital ring station, moon, asteroids
@@ -47,7 +47,7 @@ A world-class cinematic scroll-driven storytelling experience — built to Awwwa
 
 ---
 
-## ✦ Chapters
+## ✦ Chapters!
 
 | # | Chapter | Highlights |
 |---|---------|-----------|
@@ -177,7 +177,7 @@ Fonts:
 
 ---
 
-## ✦ License
+## ✦ License!
 
 MIT — build freely, share generously.
 
